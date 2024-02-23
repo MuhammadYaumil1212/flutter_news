@@ -21,7 +21,7 @@ class _NewsApiService implements NewsApiService {
   String? baseUrl;
 
   @override
-  Future<List<ArticleModel>> getNewsArticles({
+  Future<HttpResponse<List<ArticleModel>>> getNewsArticles({
     String? apiKey,
     String? country,
     String? category,
@@ -35,8 +35,8 @@ class _NewsApiService implements NewsApiService {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<ArticleModel>>(Options(
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<HttpResponse<List<ArticleModel>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -55,7 +55,8 @@ class _NewsApiService implements NewsApiService {
     var value = _result.data!
         .map((dynamic i) => ArticleModel.fromJson(i as Map<String, dynamic>))
         .toList();
-    return value;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
