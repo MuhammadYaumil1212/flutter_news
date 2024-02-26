@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../domain/entities/article.dart';
 
 class ArticleWidget extends StatelessWidget {
@@ -89,6 +90,11 @@ class ArticleWidget extends StatelessWidget {
   }
 
   Widget _buildTitleAndDescription() {
+    String formatDate(String dateString) {
+      DateTime date = DateTime.parse(dateString);
+      DateFormat dateFormat = DateFormat("dd / MMMM / yyy | hh:mm a");
+      return dateFormat.format(date);
+    }
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 7),
@@ -126,7 +132,7 @@ class ArticleWidget extends StatelessWidget {
                 const Icon(Icons.timeline_outlined, size: 16),
                 const SizedBox(width: 4),
                 Text(
-                  article!.publishedAt!,
+                  formatDate(article!.publishedAt!),
                   style: const TextStyle(
                     fontSize: 12,
                   ),
