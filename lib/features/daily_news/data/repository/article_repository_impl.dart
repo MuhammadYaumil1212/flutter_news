@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:news_flutter/features/core/constants/constants.dart';
-import 'package:news_flutter/features/core/resources/data_state.dart';
+import 'package:news_flutter/core/constants/constants.dart';
+import 'package:news_flutter/core/resources/data_state.dart';
 import 'package:news_flutter/features/daily_news/data/models/article_model.dart';
 import 'package:news_flutter/features/daily_news/data/remote/news_api_service.dart';
 import 'package:news_flutter/features/daily_news/domain/repository/article_repository.dart';

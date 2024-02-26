@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:news_flutter/features/core/constants/constants.dart';
+import 'package:news_flutter/core/constants/constants.dart';
 import 'package:news_flutter/features/daily_news/data/models/article_model.dart';
 import 'package:retrofit/dio.dart';
 import 'package:retrofit/http.dart';
