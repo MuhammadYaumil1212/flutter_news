@@ -6,7 +6,10 @@ import 'package:news_flutter/features/daily_news/presentation/bloc/article/remot
 import 'package:news_flutter/features/daily_news/presentation/pages/home/daily_news.dart';
 import 'package:news_flutter/injection_container.dart';
 
+import 'config/routes/app_routes.dart';
+
 Future<void>main()async{
+  WidgetsFlutterBinding.ensureInitialized();
   await initialDependencies();
   runApp(const MyApp());
 }
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter News',
           theme: theme(),
+          onGenerateRoute: AppRoutes.onGenerateRoutes,
           home: const DailyNews(),
         ),
     );
